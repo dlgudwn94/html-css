@@ -1,72 +1,83 @@
-@import "./../../common/modern-reset.css";
+@import "./../../common/mordern-reset.css";
 @import "./../../common/base.css";
 
-body {
-  --bg-color: var(--gray);
-  --text-color: var(--white);
-
-  background-color: var(--bg-color);
-  color: var(--text-color);
+h1,
+h2,
+button {
+  margin-block: 1rem;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.button--burger {
+  inline-size: 24px;
+  block-size: 24px;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .burger-bar {
+    position: absolute;
+    inset-inline: 0;
+    block-size: 20%;
+    background-color: currentColor;
+    border-radius: 100px;
+    transition: all 0.2s;
+  }
+
+  .burger-bar-top {
+    inset-block-start: 0;
+  }
+
+  .burger-bar-middle {
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    /* transform: translateY(-50%); */
+  }
+
+  .burger-bar-bottom {
+    inset-block-start: 100%;
+    translate: 0 -100%;
+    /* transform: translateY(-100%); */
+  }
+
+  &:hover {
+    .burger-bar-top {
+      inset-block-start: 50%;
+      translate: 0 -50%;
+      rotate: -45deg;
+      /* transform: translateY(-50%) rotate(45deg); */
+    }
+
+    .burger-bar-middle {
+      /* transform: translate(120%, -50%); */
+      translate: 120% -50%;
+    }
+
+    .burger-bar-bottom {
+      inset-block-start: 50%;
+      translate: 0 -50%;
+      rotate: 45deg;
+      /* transform: translateY(-50%) rotate(-45deg); */
+    }
+  }
 }
 
-.container {
-  display: grid;
-  grid-template-columns: minmax(280px, 1fr);
-  column-gap: 2rem;
-
-  @media (min-width: 48rem) {
-    grid-template-columns: repeat(2, minmax(280px, 1fr));
+@keyframes spinner {
+  0% {
+    rotate: 0deg;
   }
-
-  @media (min-width: 80rem) {
-    grid-template-columns: repeat(3, minmax(280px, 1fr));
+  100% {
+    rotate: 360deg;
   }
+}
 
-  h1 {
-    grid-column: 1 / -1;
-    margin-block: 1rem;
+.loading-spinner {
+  inline-size: 48px;
+  block-size: 48px;
+  color: var(--red);
 
-    &::before {
-      content: "🎁";
-      margin-inline-end: 0.5rem;
-    }
-  }
-
-  .column {
-    --bg-color: var(--silver);
-    --text-color: var(--black);
-
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    padding: 1rem;
-    border-radius: 0.5rem;
-
-    ul {
-      columns: 2;
-      column-rule: 1px solid currentColor;
-      column-gap: 4rem;
-    }
-  }
-
-  h2 {
-    --text-color: var(--gray);
-    margin-block: 1rem;
-
-    color: var(--text-color);
-    font-size: 1.8rem;
-
-    &::before {
-      content: "💜";
-      margin-inline-end: 0.5rem;
-    }
-  }
-
-  li {
-    margin-block: 0.5rem;
+  svg {
+    animation: spinner 1s infinite steps(12);
   }
 }
