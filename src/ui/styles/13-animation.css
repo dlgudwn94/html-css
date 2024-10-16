@@ -1,5 +1,5 @@
-@import "./mordern-reset.css";
-@import "./base.css";
+@import "./../../common/modern-reset.css";
+@import "./../../common/base.css";
 
 body {
   --bg-color: var(--gray);
