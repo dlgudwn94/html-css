@@ -47,11 +47,10 @@ p:not(.card__description) {
 @container (inline-size > 30rem) {
   .card {
     grid-template: "image description" / 1fr 2fr;
-
-    .card__description {
-      /* 크기 변경 확인 필요 */
-      /* font-size: clamp(12px, 10cqi, 30px); */
-    }
+    /* 크기 변경 확인 필요 */
+    /* .card__description {
+      font-size: clamp(12px, 10cqi, 30px);
+    }  */
   }
 }
 
